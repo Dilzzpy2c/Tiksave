@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikSave | Download TikTok Video Tanpa Watermark</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <style>
+        * {
+            cursor: none !important; /* Menyembunyikan kursor asli untuk custom cursor */
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #0f172a;
+            color: #f8fafc;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0, transparent 50%), 
+                radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.15) 0, transparent 50%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        .glass {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.3);
+        }
+        .step-number {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+        }
+        /* Custom Cursor */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+        #cursor-blur {
+            width: 200px;
+            height: 200px;
+            background: rgba(59, 130, 246, 0.15);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            filter: blur(50px);
+            transition: transform 0.2s ease;
+        }
+        /* Floating Animation */
+        .float {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, -0px); }
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Custom Cursor Elements -->
+    <div id="cursor"></div>
+    <div id="cursor-blur"></div>
+
+    <!-- Navbar -->
+    <nav class="py-6 px-4 border-b border-white/5 sticky top-0 z-50 glass" data-aos="fade-down">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-2 group">
+                <div class="w-10 h-10 bg-gradient-to-tr from-blue-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-blue-500/20 group-hover:rotate-12 transition-transform">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                </div>
+                <span class="text-2xl font-extrabold tracking-tighter">Tik<span class="text-blue-400">Save</span></span>
+            </div>
+            
+            <div class="flex items-center">
+                <span class="text-sm font-bold tracking-widest uppercase bg-white/5 px-4 py-2 rounded-full border border-white/10 text-blue-400 hover:bg-blue-400 hover:text-white transition-colors duration-500">
+                    Dproject
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-grow flex flex-col items-center px-4 py-12">
+        <div class="max-w-3xl w-full text-center space-y-12">
+            <!-- Hero Section -->
+            <div class="space-y-4" data-aos="zoom-in">
+                <h1 class="text-4xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                    Download TikTok Video <br>
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-blue-400 animate-pulse">Tanpa Watermark</span>
+                </h1>
+                <p class="text-slate-400 text-lg md:text-xl max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                    Unduh video favorit Anda dengan kualitas HD secara cepat, gratis, dan aman.
+                </p>
+            </div>
+
+            <!-- Input Box -->
+            <div class="glass p-2 md:p-3 rounded-2xl shadow-2xl flex flex-col md:flex-row gap-3" data-aos="fade-up" data-aos-delay="400">
+                <div class="flex-grow flex items-center px-4 gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500 float" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+                    </svg>
+                    <input 
+                        type="text" 
+                        id="tiktokUrl" 
+                        placeholder="Tempel tautan video TikTok di sini..."
+                        class="w-full bg-transparent border-none py-4 text-slate-100 placeholder:text-slate-500 focus:outline-none font-medium"
+                    >
+                </div>
+                <button 
+                    onclick="downloadVideo()" 
+                    id="btnAction"
+                    class="bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 px-10 rounded-xl transition duration-300 flex items-center justify-center gap-2 shadow-lg shadow-blue-600/30 group"
+                >
+                    <span id="btnText">Download</span>
+                    <svg id="loadingIcon" class="hidden animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Error Message -->
+            <div id="errorArea" class="hidden bg-red-500/10 border border-red-500/20 text-red-400 p-4 rounded-xl text-sm font-medium animate-bounce"></div>
+
+            <!-- Result Section -->
+            <div id="resultArea" class="hidden glass p-6 rounded-3xl text-left flex flex-col md:flex-row gap-8">
+                <div class="w-full md:w-1/3" data-aos="fade-right">
+                    <div id="videoPreview" class="rounded-2xl overflow-hidden aspect-[9/16] bg-black shadow-2xl relative border border-white/10"></div>
+                </div>
+                <div class="flex-grow space-y-6" data-aos="fade-left">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2">Detail Video</h3>
+                        <div class="flex items-center gap-3 bg-white/5 p-4 rounded-2xl border border-white/5">
+                            <div id="authorAvatar" class="w-12 h-12 rounded-full bg-slate-700 ring-2 ring-blue-500/50"></div>
+                            <div>
+                                <p id="authorName" class="font-bold text-base text-blue-400">@username</p>
+                                <p id="videoDesc" class="text-sm text-slate-400 line-clamp-2 italic">Caption video...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 gap-3">
+                        <a id="dlNoWatermark" href="#" target="_blank" class="flex items-center justify-between p-5 bg-blue-600/10 hover:bg-blue-600/20 border border-blue-600/20 rounded-2xl transition group">
+                            <div class="flex items-center gap-4">
+                                <div class="p-3 bg-blue-600 rounded-xl text-white shadow-lg shadow-blue-600/30 group-hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" /></svg>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-base text-white">Video (Tanpa WM)</p>
+                                    <p class="text-[10px] uppercase tracking-widest text-blue-400 font-bold">HD Quality</p>
+                                </div>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500 group-hover:text-white group-hover:translate-x-1 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                        </a>
+                        <a id="dlMusic" href="#" target="_blank" class="flex items-center justify-between p-5 bg-purple-600/10 hover:bg-purple-600/20 border border-purple-600/20 rounded-2xl transition group">
+                            <div class="flex items-center gap-4">
+                                <div class="p-3 bg-purple-600 rounded-xl text-white shadow-lg shadow-purple-600/30 group-hover:scale-110 transition-transform">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z" /></svg>
+                                </div>
+                                <div>
+                                    <p class="font-bold text-base text-white">Musik (MP3)</p>
+                                    <p class="text-[10px] uppercase tracking-widest text-purple-400 font-bold">Audio Only</p>
+                                </div>
+                            </div>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-slate-500 group-hover:text-white group-hover:translate-x-1 transition" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tutorial Section -->
+            <div class="pt-12 text-left space-y-8">
+                <h2 class="text-3xl font-bold flex items-center gap-3" data-aos="fade-right">
+                    <span class="w-2 h-8 bg-blue-500 rounded-full"></span>
+                    Tutorial Cara Download
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass p-8 rounded-3xl relative group border-white/5" data-aos="fade-up" data-aos-delay="100">
+                        <div class="step-number w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-white mb-6 shadow-lg shadow-blue-500/40 group-hover:scale-110 transition-transform italic">01</div>
+                        <h3 class="font-bold text-xl mb-3">Salin Tautan</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">Buka aplikasi TikTok, pilih video kesukaanmu, klik 'Bagikan' lalu pilih 'Salin Tautan'.</p>
+                    </div>
+                    <div class="glass p-8 rounded-3xl relative group border-white/5" data-aos="fade-up" data-aos-delay="200">
+                        <div class="step-number w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-white mb-6 shadow-lg shadow-blue-500/40 group-hover:scale-110 transition-transform italic">02</div>
+                        <h3 class="font-bold text-xl mb-3">Tempel Link</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">Tempelkan tautan yang sudah disalin ke kolom input di atas dengan menahan layar atau klik paste.</p>
+                    </div>
+                    <div class="glass p-8 rounded-3xl relative group border-white/5" data-aos="fade-up" data-aos-delay="300">
+                        <div class="step-number w-12 h-12 rounded-2xl flex items-center justify-center font-bold text-white mb-6 shadow-lg shadow-blue-500/40 group-hover:scale-110 transition-transform italic">03</div>
+                        <h3 class="font-bold text-xl mb-3">Simpan Video</h3>
+                        <p class="text-sm text-slate-400 leading-relaxed">Klik tombol download dan tekan bagian Video atau klik titik 3 untuk menyimpan ke galeri.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4 border-t border-white/5 text-center text-slate-500 mt-20" data-aos="fade-up">
+        <div class="max-w-4xl mx-auto space-y-4">
+            <p class="text-sm">TikSave tidak berafiliasi dengan TikTok atau ByteDance.</p>
+            <p class="text-[10px] font-bold uppercase tracking-[4px] text-blue-400/50">Dibuat dengan Dilzz Project &bull; 2026</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            easing: 'ease-out-back'
+        });
+
+        // Custom Cursor Logic
+        const cursor = document.getElementById('cursor');
+        const blur = document.getElementById('cursor-blur');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX - 10}px, ${e.clientY - 10}px)`;
+            blur.style.transform = `translate(${e.clientX - 100}px, ${e.clientY - 100}px)`;
+        });
+
+        // Hover Effect on Buttons/Links for Cursor
+        const interactables = document.querySelectorAll('a, button, input');
+        interactables.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform += ' scale(2.5)';
+                cursor.style.background = '#3b82f6';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.background = 'white';
+            });
+        });
+
+        async function downloadVideo() {
+            const urlInput = document.getElementById('tiktokUrl').value.trim();
+            const btn = document.getElementById('btnAction');
+            const btnText = document.getElementById('btnText');
+            const loadingIcon = document.getElementById('loadingIcon');
+            const resultArea = document.getElementById('resultArea');
+            const errorArea = document.getElementById('errorArea');
+
+            if (!urlInput) {
+                showError("Mohon masukkan tautan video TikTok!");
+                return;
+            }
+
+            btn.disabled = true;
+            btnText.innerText = "Processing...";
+            loadingIcon.classList.remove('hidden');
+            resultArea.classList.add('hidden');
+            errorArea.classList.add('hidden');
+
+            try {
+                const response = await fetch(`https://www.tikwm.com/api/?url=${encodeURIComponent(urlInput)}`);
+                const data = await response.json();
+
+                if (data.code === 0) {
+                    const video = data.data;
+                    document.getElementById('authorName').innerText = "@" + video.author.unique_id;
+                    document.getElementById('videoDesc').innerText = video.title || "No description provided";
+                    document.getElementById('authorAvatar').style.backgroundImage = `url('${video.author.avatar}')`;
+                    document.getElementById('authorAvatar').style.backgroundSize = "cover";
+                    
+                    document.getElementById('videoPreview').innerHTML = `
+                        <video controls class="w-full h-full object-cover">
+                            <source src="${video.play}" type="video/mp4">
+                        </video>
+                    `;
+
+                    document.getElementById('dlNoWatermark').href = video.play;
+                    document.getElementById('dlMusic').href = video.music;
+
+                    resultArea.classList.remove('hidden');
+                    AOS.refresh();
+                    window.scrollTo({ top: resultArea.offsetTop - 100, behavior: 'smooth' });
+                } else {
+                    showError("Link tidak valid atau video tidak ditemukan!");
+                }
+            } catch (err) {
+                showError("Koneksi bermasalah. Coba lagi nanti!");
+            } finally {
+                btn.disabled = false;
+                btnText.innerText = "Download";
+                loadingIcon.classList.add('hidden');
+            }
+        }
+
+        function showError(msg) {
+            const errorArea = document.getElementById('errorArea');
+            errorArea.innerText = msg;
+            errorArea.classList.remove('hidden');
+        }
+
+        document.getElementById('tiktokUrl').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') downloadVideo();
+        });
+    </script>
+</body>
+                          </html>
